@@ -10,6 +10,7 @@ function findById(id) {
   return products.find(p => p.id === id) || null;
 }
 
+// POST
 function create(fields) {
   const data = dataSource.load();
   const product = { id: data.nextId, ...fields };
@@ -19,6 +20,7 @@ function create(fields) {
   return product;
 }
 
+// PUT
 function replace(id, fields) {
   const data = dataSource.load();
   const index = data.products.findIndex(p => p.id === id);
@@ -29,6 +31,7 @@ function replace(id, fields) {
   return data.products[index];
 }
 
+// PATCH
 function update(id, fields) {
   const data = dataSource.load();
   const index = data.products.findIndex(p => p.id == id);
@@ -39,6 +42,7 @@ function update(id, fields) {
   return data.products[index];
 }
 
+// DELETE
 function remove (id) {
   const data = dataSource.load();
   const index = data.products.findIndex(p => p.id == id);
