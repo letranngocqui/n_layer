@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const filePath = path.join(__dirname, 'products.json');
+const filePath = path.join(__dirname, 'database.json');
 
 function load() {
   try {
