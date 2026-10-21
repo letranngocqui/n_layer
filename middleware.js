@@ -4,7 +4,6 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const { sendJson } = require('./utils/http');
 
 const jwt = require('jsonwebtoken');
-const { log } = require('node:console');
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
 if (!JWT_SECRET) {
@@ -19,14 +18,14 @@ function logRequest(req) {
 
 // Send 401 and tell the router to stop
 function unauthorized(res, message) {
-  res.setHeader('WWW-Authentication', 'Bearer');
+  res.setHeader('WWW-Authenticate', 'Bearer');
   sendJson(res, 401, { error: message });
   return false;
 }
 
 // Attached to the write routes (POST, PUT, PATCH, DELETE)
-function requireAuth(res, req) {
-  const header = req.header['authentication'];
+function requireAuth(req, res) {
+  const header = req.header['authorization'];
   if (!header)
     return unauthorized(res, 'missing Authorization header');
 

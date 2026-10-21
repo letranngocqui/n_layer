@@ -16,7 +16,7 @@ function readJsonBody(req) {
       }
       if (data === null || typeof data !== 'object' || Array.isArray(data))
         return reject(new Error('Request body must be a JSON object'));
-      return resove(data);
+      return resolve(data);
     });
     req.on('error', reject);
   });

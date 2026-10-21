@@ -90,12 +90,12 @@ async function updateProduct(req, res, { id }) {
 }
 
 // DELETE /products/id
-function removeProduct(res, req, { id }) {
+function removeProduct(req, res, { id }) {
   const deleted = repo.remove(parseId(id));
   if (deleted === null)
     return sendJson(res, 404, { error: 'NOT FOUND' });
 
-  return sendJson(res, 204, deleted);
+  return sendJson(res, 200, deleted);
 }
 
 module.exports = { getList, getOne, createProduct, replaceProduct, updateProduct, removeProduct };

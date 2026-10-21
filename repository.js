@@ -15,7 +15,7 @@ function create(fields) {
   const data = dataSource.load();
   const product = { id: data.nextId, ...fields };
   data.nextId += 1;
-  data.push(product);
+  data.products.push(product);
   dataSource.save(data);
   return product;
 }
@@ -27,7 +27,7 @@ function replace(id, fields) {
   if (index === -1)
     return null;
   data.products[index] = { id, ...fields };
-  data.dataSource.save(data);
+  dataSource.save(data);
   return data.products[index];
 }
 

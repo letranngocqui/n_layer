@@ -6,7 +6,7 @@ const rules = {
     return null;
   },
   price: (value) => {
-    if (typeof value !== 'number' || Number.isFinite(value) || value < 0) {
+    if (typeof value !== 'number' || !Number.isFinite(value) || value < 0) {
       return 'Price must be a number >= 0';
     }
     return null;
@@ -15,7 +15,7 @@ const rules = {
 
 function findUnknownFields(fields) {
   const unknownFields = Object.keys(fields).filter((key) => !Object.hasOwn(rules, key));
-  return unknownFields > 0 ? `Fields are not allowed: ${unknownFiedls.join(',')}` : null;
+  return unknownFields.length > 0 ? `Fields are not allowed: ${unknownFields.join(',')}` : null;
 }
 
 // POST and PUT
