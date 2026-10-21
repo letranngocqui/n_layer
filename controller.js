@@ -1,5 +1,5 @@
-const { sendJson, readJsonBody } = require('../utils/http');
-const { validateProduct, validatePatch } = require('../utils/validate');
+const { sendJson, readJsonBody } = require('./utils/http');
+const { validateProduct, validatePatch } = require('./utils/validate');
 const repo = require('./repository');
 
 // The id from the URL is a string, so convert it to a number

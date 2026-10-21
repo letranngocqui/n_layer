@@ -1,11 +1,11 @@
 const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-const { sendJson } = require('../utils/http');
+const { sendJson } = require('./utils/http');
 
 const jwt = require('jsonwebtoken');
 const { log } = require('node:console');
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
 if (!JWT_SECRET) {
   throw new Error('JWT_SECRET_KEY is not set in the .env file');

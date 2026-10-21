@@ -1,5 +1,8 @@
-const path = require('node:path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+const http = require('http');
+const { handleRequest } = require('./router');
 
-const { createServer } = require('node:http');
 const PORT = 3000;
+
+http.createServer(handleRequest).listen(PORT, () => {
+  console.log(`Server listening on http://localhost:${PORT}`);
+});
