@@ -25,7 +25,7 @@ function unauthorized(res, message) {
 
 // Attached to the write routes (POST, PUT, PATCH, DELETE)
 function requireAuth(req, res) {
-  const header = req.header['authorization'];
+  const header = req.headers['authorization'];
   if (!header)
     return unauthorized(res, 'missing Authorization header');
 
